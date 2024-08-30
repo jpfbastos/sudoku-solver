@@ -88,7 +88,13 @@ Extra intermediate steps can be shown using the debug option
 Here are some examples of how the project works:
 
 **Input Image**:
-![Input Image](examples/sudoku_example.png)
+![Input Image](examples/sudoku_input.png)
 
 **Output Image**:
-![Output Image](output/sudoku_solution.png)
+![Output Image](examples/sudoku_output.png)
+
+
+### On the To-Do List
+Add requirements.txt
+Add images
+Use pruning instead of backtracking to improve speed
