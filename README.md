@@ -94,7 +94,7 @@ Here are some examples of how the project works:
 ![Output Image](examples/sudoku_output.png)
 
 
-### On the To-Do List
-Add requirements.txt
-Add images
-Use pruning instead of backtracking to improve speed
+## On the To-Do List
+- Add requirements.txt
+- Add images
+- Use pruning instead of backtracking to improve speed
