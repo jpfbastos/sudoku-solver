@@ -1,18 +1,35 @@
+import argparse
+import os.path
+import cv2
 import extract_puzzle
 import extract_digit
 import solve_puzzle
-import cv2
 
 if __name__ == '__main__':
-    extract_digit.start(dataset='tmnist')
+
+    parser = argparse.ArgumentParser(description="Sudoku Solver from Image")
+    parser.add_argument('--input', '-i', type=str, default=None, help="Path to the input Sudoku image file (leave "
+                                                                      "blank to use camera)")
+    parser.add_argument('--dataset', '-d', type=str, choices=['mnist', 'tmnist'], default='mnist',
+                        help="Choice of dataset for the CNN model ('mnist' or 'tmnist')")
+    parser.add_argument('--debug', type=str, choices=['read_puzzle', 'extract_digits', 'all'], default=None,
+                        help="Debug info ('read_puzzle', 'extract_digits' or 'all')")
+
+    args = parser.parse_args()
+    input_path = args.input
+    if input_path and not os.path.isfile(input_path):
+        print("File not found")
+        exit()
+    dataset_choice = args.dataset
+    debug_info = args.debug
+
+    extract_digit.start(dataset=dataset_choice)
 
     while True:
         # Initialize the camera
         cam = cv2.VideoCapture(0)
 
         cv2.namedWindow('img')
-
-        img_counter = 0
 
         while True:
             # Continuously reads an image from the camera and displays it (basically live video)
@@ -48,8 +65,9 @@ if __name__ == '__main__':
         cam.release()
         cv2.destroyAllWindows()
 
-        puzzle, colour = extract_puzzle.read_puzzle('sudoku.png', debug=True)
-        matrix = extract_puzzle.extract_array(puzzle, debug=False)
+        puzzle, colour = extract_puzzle.read_puzzle('sudoku.png',
+                                                    debug=debug_info == 'read_puzzle' or debug_info == 'all')
+        matrix = extract_puzzle.extract_array(puzzle, debug=debug_info == 'extract_array' or debug_info == 'all')
         if solve_puzzle.solve_sudoku(matrix):
             img = solve_puzzle.pretty_print(colour, matrix)
             cv2.imshow('Solved Sudoku (Press Esc to quit, any other key to solve another puzzle)', img)
