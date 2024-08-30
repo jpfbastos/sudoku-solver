@@ -38,7 +38,7 @@ This project is a Sudoku solver which combines two main components: OpenCV for i
 
 1. **Run the Solver**: Use the following command to solve the Sudoku puzzle (leave --input blank if camera is being used):
     ```bash
-    python main.py --input path/to/your/sudoku_image.png --database [tmnist (default) or mnist]
+    python main.py --source path/to/your/sudoku_image.png --database [tmnist (default) or mnist]
     ```
 2. **Output**: The program will display the original image with the solved Sudoku grid overlaid.
 
