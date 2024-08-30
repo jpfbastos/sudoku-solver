@@ -38,7 +38,7 @@ This project is a Sudoku solver which combines two main components: OpenCV for i
 
 1. **Run the Solver**: Use the following command to solve the Sudoku puzzle (leave --input blank if camera is being used):
     ```bash
-    python main.py --input path/to/your/sudoku_image.png --database (tmnist or mnist) 
+    python main.py --input path/to/your/sudoku_image.png --database [tmnist (default) or mnist]
     ```
 2. **Output**: The program will display the original image with the solved Sudoku grid overlaid.
 
@@ -46,8 +46,13 @@ This project is a Sudoku solver which combines two main components: OpenCV for i
 
 Extra intermediate steps can be shown using the debug option
   ```bash
-  python main.py --input path/to/your/sudoku_image.png --database (tmnist or mnist) --debug (read_puzzle, extract_digits or all)
+  python main.py --input path/to/your/sudoku_image.png --database (tmnist or mnist) --debug (read_puzzle, extract_array or all)
   ```
+**Fine-Tuning for Potential Issues**
+- Ensure the correct model has been selected (MNIST for handwritten digits and TMNIST for fonts)
+- In the `extract_array` function in `extract_puzzle.py` file:
+  - Change the threshold by changing the second parameter of `cv2.threshold()` function to allow more or less darker shades to turn into a white pixel (a too low threshold will add noise to the image and may make borders thicker, and a too high threshold may remove detail from the digit)
+  - Change the size of the border by changing the second parameter of the `clear_border()` function to increase or decrease the distance from the edge where white pixels are cleared (too small distance makes the border between boxes appear, and a too large distance may remove detail from the digit)
 
 ## How It Works
 
@@ -95,7 +100,5 @@ Here are some examples of how the project works:
 
 
 ## On the To-Do List
-- Add requirements.txt
 - Add images
-- Add command-line arguments to improve ease of use
 - Use pruning instead of backtracking to improve speed
