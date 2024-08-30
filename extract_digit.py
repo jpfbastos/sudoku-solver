@@ -3,7 +3,7 @@ import pandas as pd
 import os
 from keras.datasets import mnist
 from keras.models import Sequential, load_model
-from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
+from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D, Input
 from keras.utils import to_categorical
 from keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
@@ -47,7 +47,8 @@ def start(dataset):
 
         model = Sequential(
             [
-                Conv2D(32, (5, 5), input_shape=(28, 28, 1), activation='relu'),
+                Input(shape=(28, 28, 1)),
+                Conv2D(32, (5, 5), activation='relu'),
                 MaxPooling2D(pool_size=(2, 2)),
                 Conv2D(16, (3, 3), activation='relu'),
                 MaxPooling2D(pool_size=(2, 2)),

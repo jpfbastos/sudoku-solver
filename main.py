@@ -82,7 +82,7 @@ if __name__ == '__main__':
                         help="Debug info ('read_puzzle', 'extract_array' or 'all')")
 
     args = parser.parse_args()
-    input_path = args.input
+    input_path = args.source
     if input_path and not os.path.isfile(input_path):
         print("File not found")
         exit()
