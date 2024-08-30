@@ -1,6 +1,6 @@
 # Sudoku Solver and CNN-Based Digit Recognition
 
-This project is a Sudoku solver which combines two main components: OpenCV for image processing, and a Convolutional Neural Network (CNN) for digit recognition. The CNN can be trained using either the MNIST or Typographical MNIST (TMNIST) datasets. The Sudoku solver takes an image of a Sudoku puzzle (saved or using the camera), extracts the digits and solves the puzzle.
+This project is a Sudoku solver which combines two main components: OpenCV for image processing, and a Convolutional Neural Network (CNN) for digit recognition. The CNN can be trained using either the MNIST or Typographical MNIST (TMNIST) datasets. The Sudoku solver takes an image of a Sudoku puzzle (saved or using the camera), extracts the digits and solves the puzzle
 
 ## Table of Contents
 - [Features](#features)
@@ -12,11 +12,11 @@ This project is a Sudoku solver which combines two main components: OpenCV for i
 - [Examples](#examples)
 
 ## Features
-  - Image preprocessing with OpenCV.
-  - Pretrained model loading to avoid retraining.
-  - Digit extraction using Tensorflow Keras CNN for digit recognition.
-  - Sudoku solving via backtracking algorithm.
-  - Overlay of the solution on the original image.
+  - Image preprocessing with OpenCV
+  - Pretrained model loading to avoid retraining
+  - Digit extraction using Tensorflow Keras CNN for digit recognition
+  - Sudoku solving via backtracking algorithm
+  - Overlay of the solution on the original image
 
 ## Installation
 
@@ -79,14 +79,11 @@ Extra intermediate steps can be shown using the debug option
 
 ### CNN Model Explanation
 
-- Two Conv2D layers for feature extraction.
-- MaxPooling2D layers for downsampling.
-- Dropout layer for regularisation.
-- Flatten layer to convert 2D feature maps into 1D.
-- Dense layers for classification.
-
-- Load the saved model and weights.
-- Predict the class of an input digit image.
+- Two Conv2D layers for feature extraction
+- MaxPooling2D layers for downsampling
+- Dropout layer for regularisation
+- Flatten layer to convert 2D feature maps into 1D
+- Dense layers for classification
 
 ## Examples
 
