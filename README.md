@@ -97,4 +97,5 @@ Here are some examples of how the project works:
 ## On the To-Do List
 - Add requirements.txt
 - Add images
+- Add command-line arguments to improve ease of use
 - Use pruning instead of backtracking to improve speed
