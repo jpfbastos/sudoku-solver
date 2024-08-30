@@ -96,12 +96,13 @@ Extra intermediate steps can be shown using the debug option
 Here are some examples of how the project works:
 
 **Input Image**:
-![Input Image](examples/sudoku_cam_input.png)
+
+<img src="examples/sudoku_cam_input.png" alt="Input image from camera" width="600"/>
 
 **Output Image**:
-![Output Image](examples/sudoku_output.png)
+
+<img src="examples/sudoku_cam_output.png" alt="Output from image taken using camera" width="600"/>
 
 
-## On the To-Do List
-- Add images
+## On the To-Do List:
 - Use pruning instead of backtracking to improve speed
