@@ -62,10 +62,11 @@ def extract_array(puzzle, debug=False):
         for col in range(9):
             # Gets the pixels ranging from the start to the end of the row and column (so the digit inside that box)
             digit = puzzle[row * cell_height:(row + 1) * cell_height, col * cell_width:(col + 1) * cell_width]
-            # New image where all non-zero (black) pixels will become white
-            _, thresh = cv2.threshold(digit, 0, 255, cv2.THRESH_BINARY)
-            # Everything touching a border which covers 3% (average) of the width or height of the image is cleared
-            digit = clear_border(thresh, round((cell_height + cell_width) / 2 * 0.03))
+            # New image where all pixels with a brightness 200 or above will become white
+            # (change second parameter to adjust brightness threshold)
+            _, thresh = cv2.threshold(digit, 200, 255, cv2.THRESH_BINARY)
+            # Everything touching a border which covers 7% (average) of the width or height of the image is cleared
+            digit = clear_border(thresh, round((cell_height + cell_width) / 2 * 0.07))
             if np.average(digit) > 5:  # if the pixel is empty, it will be black (0), so this detects non-black pixels
                 coords = cv2.findNonZero(digit)
                 x, y, w, h = cv2.boundingRect(coords)

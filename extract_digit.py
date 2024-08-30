@@ -2,9 +2,8 @@ import numpy as np
 import pandas as pd
 import os
 from keras.datasets import mnist
-from keras.models import Sequential
+from keras.models import Sequential, load_model
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
-from keras.src.saving.legacy.model_config import model_from_json
 from keras.utils import to_categorical
 from keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
@@ -12,16 +11,12 @@ from sklearn.model_selection import train_test_split
 model = Sequential()
 
 
-def start(dataset='tmnist'):
+def start(dataset):
     global model
     num_classes = 0
-    if os.path.exists('model_' + dataset + '.json') and os.path.exists('model_' + dataset + '.h5'):
-        # Checks both the model and weights exist
-        json_file = open('model_' + dataset + '.json', 'r')
-        loaded_model_json = json_file.read()
-        json_file.close()
-        model = model_from_json(loaded_model_json)
-        model.load_weights('model_' + dataset + '.h5')
+    if os.path.exists('model_' + dataset + '.keras'):
+        # Checks model exists
+        model = load_model('model_' + dataset + '.keras')
         print('Loaded saved model from disk.')
     else:
         if dataset == 'mnist':
@@ -68,20 +63,15 @@ def start(dataset='tmnist'):
         model.fit(X_train, y_train, validation_data=(X_test, y_test), batch_size=300, epochs=50,
                   callbacks=[callback], shuffle=True)
         scores = model.evaluate(X_test, y_test, verbose=0)
-        print("CNN Error: %.2f%%" % (100 - scores[1] * 100))
+        print('CNN Error: %.2f%%' % (100 - scores[1] * 100))
 
-        # Serialise model to JSON
-        model_json = model.to_json()
-        with open('model_' + dataset + '.json', 'w') as json_file:
-            json_file.write(model_json)
-        # Serialise weights to HDF5
-        model.save_weights('model_' + dataset + '.h5')
-        print("Saved model to disk")
+        # Serialise model to .keras
+        model.save('model_' + dataset + '.keras')
 
 
 def extract_number(digit):
     global model
     prediction = model.predict(digit)
     predicted_class = np.argmax(prediction, axis=1)
-
+    print(predicted_class[0])
     return predicted_class[0]

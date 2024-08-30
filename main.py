@@ -10,10 +10,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Sudoku Solver from Image")
     parser.add_argument('--input', '-i', type=str, default=None, help="Path to the input Sudoku image file (leave "
                                                                       "blank to use camera)")
-    parser.add_argument('--dataset', '-d', type=str, choices=['mnist', 'tmnist'], default='mnist',
+    parser.add_argument('--dataset', '-d', type=str, choices=['mnist', 'tmnist'], default='tmnist',
                         help="Choice of dataset for the CNN model ('mnist' or 'tmnist')")
-    parser.add_argument('--debug', type=str, choices=['read_puzzle', 'extract_digits', 'all'], default=None,
-                        help="Debug info ('read_puzzle', 'extract_digits' or 'all')")
+    parser.add_argument('--debug', type=str, choices=['read_puzzle', 'extract_array', 'all'], default=None,
+                        help="Debug info ('read_puzzle', 'extract_array' or 'all')")
 
     args = parser.parse_args()
     input_path = args.input
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     dataset_choice = args.dataset
     debug_info = args.debug
 
-    extract_digit.start(dataset=dataset_choice)
+    extract_digit.start(dataset_choice)
 
     while True:
         # Initialize the camera
