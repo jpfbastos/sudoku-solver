@@ -18,7 +18,13 @@ This project is a Sudoku solver which combines two main components: OpenCV for i
   - Sudoku solving via backtracking algorithm
   - Overlay of the solution on the original image
 
+## Requirements
+
+- **Python**: Version 3.9 or higher is required
+
 ## Installation
+
+Python 3.9 
 
 1. Clone the repository:
     ```bash
