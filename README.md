@@ -48,7 +48,9 @@ Extra intermediate steps can be shown using the debug option
   ```bash
   python main.py --input path/to/your/sudoku_image.png --database (tmnist or mnist) --debug (read_puzzle, extract_array or all)
   ```
-**Fine-Tuning for Potential Issues**
+**Troubleshooting for Potential Issues**
+- Ensure all four corners are clearly visible on the screen
+- Ensure there are no bends in the paper which may distort the puzzle shape
 - Ensure the correct model has been selected (MNIST for handwritten digits and TMNIST for fonts)
 - In the `extract_array` function in `extract_puzzle.py` file:
   - Change the threshold by changing the second parameter of `cv2.threshold()` function to allow more or less darker shades to turn into a white pixel (a too low threshold will add noise to the image and may make borders thicker, and a too high threshold may remove detail from the digit)
