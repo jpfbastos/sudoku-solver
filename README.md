@@ -1,4 +1,4 @@
-# Sudoku Solver and CNN-Based Digit Recognition
+# Sudoku Solver using OpenCV and CNN-Based Digit Recognition
 
 This project is a Sudoku solver which combines two main components: OpenCV for image processing, and a Convolutional Neural Network (CNN) for digit recognition. The CNN can be trained using either the MNIST or Typographical MNIST (TMNIST) datasets. The Sudoku solver takes an image of a Sudoku puzzle (saved or using the camera), extracts the digits and solves the puzzle
 
