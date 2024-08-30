@@ -24,8 +24,6 @@ This project is a Sudoku solver which combines two main components: OpenCV for i
 
 ## Installation
 
-Python 3.9 
-
 1. Clone the repository:
     ```bash
     git clone https://github.com/jpfbastos/sudoku-solver.git
@@ -98,7 +96,7 @@ Extra intermediate steps can be shown using the debug option
 Here are some examples of how the project works:
 
 **Input Image**:
-![Input Image](examples/sudoku_input.png)
+![Input Image](examples/sudoku_cam_input.png)
 
 **Output Image**:
 ![Output Image](examples/sudoku_output.png)
